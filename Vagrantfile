@@ -62,7 +62,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
 
     config.vm.provider "virtualbox" do |vb|
-        vb.customize ["modifyvm", :id, "--memory", "1024"]
+        vb.customize ["modifyvm", :id, "--memory", "4096"]
         vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
         vb.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
         vb.name = vagrant_name
@@ -74,26 +74,26 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
         # The following configuration options are only available post 1.7.2
         if vagrant_version >= "1.7.3"
-            hv.memory = 1024
+            hv.memory = 4096
             hv.vmname = vagrant_name
         end
     end
 
     config.vm.provider "parallels" do |vb, override|
         override.vm.box = "parallels/ubuntu-14.04"
-        vb.memory = 1024
+        vb.memory = 4096
         vb.name = vagrant_name
     end
 
     config.vm.provider "vmware_fusion" do |vm, override|
         override.vm.box = "netsensia/ubuntu-trusty64"
-        vm.vmx["memsize"] = "1024"
+        vm.vmx["memsize"] = "4096"
         vm.vmx["displayname"] = vagrant_name
     end
 
     config.vm.provider "vmware_workstation" do |vm, override|
         override.vm.box = "netsensia/ubuntu-trusty64"
-        vm.vmx["memsize"] = "1024"
+        vm.vmx["memsize"] = "4096"
         vm.vmx["displayname"] = vagrant_name
     end
 
