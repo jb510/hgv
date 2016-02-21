@@ -1,27 +1,23 @@
 <?php
 // ** MySQL settings ** //
-/** The name of the database for WordPress */
 define('DB_NAME', 'wpe_{{ enviro }}');
-
-/** MySQL database username */
 define('DB_USER', 'wpe_{{ enviro }}');
-
-/** MySQL database password */
 define('DB_PASSWORD', 'wordpress');
-
-/** MySQL hostname */
 define('DB_HOST', 'localhost');
-
-/** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
-
-/** The Database Collate type. Don't change this if in doubt. */
 define('DB_COLLATE', '');
 
+// ** WP Debug settings ** //
 define('WP_DEBUG', true);
 define('WP_DEBUG_DISPLAY', false);
 define('SCRIPT_DEBUG', true);
 define('SAVEQUERIES', true);
+
+// ** WP Extra Debug settings ** //
+//define('JETPACK_DEV_DEBUG', true);
+//define('AUTOMATIC_UPDATER_DISABLED',true);
+//define('CONCATENATE_SCRIPTS', false);
+//define('WP_CACHE', false);
 
 global $memecached_servers;
 
@@ -40,3 +36,20 @@ if( isset($_SERVER['HTTP_HOST']) ) {
 
 /** Object Cache Key Salt per domain */
 define('WP_CACHE_KEY_SALT', $wp_cache_key_salt);
+
+
+// ** WP Local Toolbox (mu-plugin) settings ** //
+define('WPLT_SERVER', 'local');
+//define('WPLT_COLOR', 'purple');
+define('WPLT_DISABLED_PLUGINS', serialize(
+	array(
+		'w3-total-cache/w3-total-cache.php',
+		'wp-super-cache/wp-cache.php', 
+		'iwp-client/init.php',
+		'updraftplus/updraftplus.php',
+		'nginx-helper/nginx-helper.php',
+		'wpremote/plugin.php',
+		'wordpress-https/wordpress-https.php',
+	)
+));
+define('WPLT_AIRPLANE', 'true');

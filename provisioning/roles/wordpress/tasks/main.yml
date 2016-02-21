@@ -70,7 +70,7 @@
   when: wpconfig.stat.exists and wpansmgd|failed
 
 - name: "Localconfig for {{ enviro }}"
-  template: src=wp/local-config.php dest={{ wp_doc_root }}/{{ enviro }}/local-config.php owner={{ web_user }} group={{ web_group }}
+  template: src=wp/wp-config-local.php dest={{ wp_doc_root }}/{{ enviro }}/wp-config-local.php owner={{ web_user }} group={{ web_group }}
 
 - name: "Object Cache for {{ enviro }}"
   template: src=wp/object-cache.php dest={{ wp_doc_root }}/{{ enviro }}/wp-content/object-cache.php owner={{ web_user }} group={{ web_group }}
