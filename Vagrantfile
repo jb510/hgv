@@ -52,6 +52,11 @@ Dir.glob( vagrant_dir + '/hgv_data/config/*.yml').each do |custom_file|
 end
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+    if Vagrant.has_plugin?("vagrant-cachier")
+     config.cache.scope = :box
+    end
+
     config.vm.box = "ubuntu/trusty64"
     config.vm.hostname = "hgv.test"
     config.vm.network "private_network", id: "hgv_primary", ip: "192.168.150.20"
